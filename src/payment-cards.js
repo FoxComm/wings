@@ -16,7 +16,7 @@ export function detectCardType(cardNumber: MaybeString): MaybeString {
   }
 }
 
-export function cardMask(cardType: MaybeString): MaybeString {
+export function cardMask(cardType: MaybeString): string {
   switch (cardType) {
     case 'amex':
       return '9999 999999 99999';
@@ -32,4 +32,18 @@ export function cvvLength(cardType: MaybeString): number {
     return 4;
   }
   return 3;
+}
+
+export function trimWhiteSpace(cardNumber: string): string {
+  return cardNumber.replace(/\s/g, '');
+}
+
+export function isCardNumberValid(cardNumber: string): boolean {
+  const mask = cardMask(detectCardType(cardNumber)).replace(/[^\d]/g, '');
+
+  return mask.length === trimWhiteSpace(cardNumber).length;
+}
+
+export function isCvvValid(cvv: string, cardType: string): boolean {
+  return cvv.length == cvvLength(cardType)
 }
