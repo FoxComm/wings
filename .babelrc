@@ -3,5 +3,5 @@
     "syntax-flow",
     "transform-flow-strip-types"
   ],
-  "presets": ["stage-1", "es2015"]
+  "presets": ["stage-1", "es2015", "react"]
 }
