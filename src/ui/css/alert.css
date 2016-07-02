@@ -24,6 +24,7 @@
     top: 7px;
     right: 7px;
     margin: 0;
+    cursor: pointer;
   }
 
   &._type_error {
