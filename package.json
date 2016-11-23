@@ -10,7 +10,7 @@
     "test": "mocha --compilers js:babel-register tests"
   },
   "description": "Shared libraries for FoxCommerce UI code",
-  "main": "index.js",
+  "main": "lib/index.js",
   "author": "",
   "license": "ISC",
   "devDependencies": {
@@ -30,6 +30,8 @@
     "postcss-cli": "^2.5.2",
     "postcss-cssnext": "^2.7.0",
     "postinstall-build": "^0.2.1",
-    "react": "^15.2.0"
+    "react": "^15.2.0",
+    "redux-act": "^1.1.0",
+    "sprout-data": "^0.2.3"
   }
 }
