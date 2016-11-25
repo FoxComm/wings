@@ -111,7 +111,10 @@ export default function createAsyncActions(namespace, asyncMethod, payloadReduce
 
       let result = promise
         .then(
-          res => dispatch(succeeded(res, ...args)),
+          res => {
+            dispatch(succeeded(res, ...args));
+            return res;
+          },
           handleError
         );
 
