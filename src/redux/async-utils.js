@@ -128,9 +128,9 @@ export default function createAsyncActions(namespace, asyncMethod, payloadReduce
     };
   };
 
-  const lazyPerform = (...args) => {
-    let promise;
+  let promise;
 
+  const lazyPerform = (...args) => {
     return (dispatch, getState) => {
       const asyncState = _.get(getState(), ['asyncActions', namespace]);
       if (asyncState && isServer && (asyncState.inProgress || asyncState.finished)) {
@@ -139,7 +139,9 @@ export default function createAsyncActions(namespace, asyncMethod, payloadReduce
 
       // if we already have hydrated state at server we don't need do request for first time
       if (asyncState && !isServer && asyncState.isReady) {
-        return dispatch(resetReadyFlag());
+        dispatch(resetReadyFlag());
+        // return empty promise in case if we have hydrated state
+        return Promise.resolve();
       }
 
       promise = dispatch(perform(...args));
