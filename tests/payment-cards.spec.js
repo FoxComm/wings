@@ -10,7 +10,8 @@ describe('payment-cards', function() {
   });
 
   it('#detectCardType', () => {
-    assert.equal(detectCardType('4242'), 'visa');
-    assert.equal(detectCardType('5300'), 'master-card');
+    assert.equal(detectCardType('4242'), 'Visa');
+    assert.equal(detectCardType('5300'), 'Mastercard');
+    assert.equal(detectCardType('3400'), 'American Express');
   });
 });
