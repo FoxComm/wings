@@ -9,10 +9,10 @@ const SUCCESS = 'success';
 
 
 type Props = {
-  type: string;
-  closeAction?: Function;
-  children: NodeType;
-  className?: string;
+  type: string,
+  closeAction?: ?Function,
+  children?: NodeType,
+  className?: string,
 }
 
 const Alert = (props: Props) => {

@@ -25,6 +25,7 @@
   },
   "dependencies": {
     "classnames": "^2.2.5",
+    "flow-bin": "^0.36.0",
     "hoist-non-react-statics": "^1.2.0",
     "lodash": "^4.13.1",
     "postcss": "^5.0.21",
