@@ -1126,7 +1126,7 @@ flatten@^1.0.2:
 
 flow-bin@^0.36.0:
   version "0.36.0"
-  resolved "https://npm.foxcommerce.com:4873/flow-bin/-/flow-bin-0.36.0.tgz#557907bd9c2ab0670cfad9e7e906a74b0631e39a"
+  resolved "https://registry.yarnpkg.com/flow-bin/-/flow-bin-0.36.0.tgz#557907bd9c2ab0670cfad9e7e906a74b0631e39a"
 
 for-in@^0.1.5:
   version "0.1.6"

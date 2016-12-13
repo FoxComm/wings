@@ -1,5 +1,5 @@
 {
-  "name": "wings",
+  "name": "@foxcomm/wings",
   "version": "1.7.0",
   "scripts": {
     "flow": "flow check",
