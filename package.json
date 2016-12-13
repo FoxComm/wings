@@ -1,13 +1,17 @@
 {
   "name": "wings",
   "version": "1.7.0",
+  "private": true,
   "scripts": {
     "flow": "flow check",
     "build-css": "postcss -c .postcss.json",
     "build-js": "babel src -d lib",
     "build": "npm run build-css && npm run build-js",
-    "postinstall": "postinstall-build lib 'npm run build'",
+    "prepublish": "npm run build",
     "test": "mocha --compilers js:babel-register tests"
+  },
+  "publishConfig": {
+    "registry": "https://npm.foxcommerce.com:4873"
   },
   "description": "Shared libraries for FoxCommerce UI code",
   "main": "lib/index.js",
@@ -31,7 +35,6 @@
     "postcss": "^5.0.21",
     "postcss-cli": "^2.5.2",
     "postcss-cssnext": "^2.7.0",
-    "postinstall-build": "^0.2.1",
     "react": "^15.2.0",
     "reduce-reducers": "^0.1.2",
     "redux": "^3.6.0",

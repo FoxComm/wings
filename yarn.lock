@@ -1124,9 +1124,9 @@ flatten@^1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/flatten/-/flatten-1.0.2.tgz#dae46a9d78fbe25292258cc1e780a41d95c03782"
 
-flow-bin@latest:
+flow-bin@^0.36.0:
   version "0.36.0"
-  resolved "https://registry.yarnpkg.com/flow-bin/-/flow-bin-0.36.0.tgz#557907bd9c2ab0670cfad9e7e906a74b0631e39a"
+  resolved "https://npm.foxcommerce.com:4873/flow-bin/-/flow-bin-0.36.0.tgz#557907bd9c2ab0670cfad9e7e906a74b0631e39a"
 
 for-in@^0.1.5:
   version "0.1.6"
@@ -2158,10 +2158,6 @@ postcss@^5.0.0, postcss@^5.0.16, postcss@^5.0.19, postcss@^5.0.2, postcss@^5.0.2
     js-base64 "^2.1.9"
     source-map "^0.5.6"
     supports-color "^3.1.2"
-
-postinstall-build@^0.2.1:
-  version "0.2.1"
-  resolved "https://registry.yarnpkg.com/postinstall-build/-/postinstall-build-0.2.1.tgz#132e95029ba6ee5229a8802b90a7adbf3f46875d"
 
 preserve@^0.2.0:
   version "0.2.0"
