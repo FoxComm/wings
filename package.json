@@ -1,7 +1,6 @@
 {
   "name": "wings",
   "version": "1.7.0",
-  "private": true,
   "scripts": {
     "flow": "flow check",
     "build-css": "postcss -c .postcss.json",
