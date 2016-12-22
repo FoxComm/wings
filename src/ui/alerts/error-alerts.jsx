@@ -15,10 +15,15 @@ type Props = {
   errors?: Array<string>;
   error?: Object|string;
   closeAction?: Function;
+  sanitizeError?: (err: string) => string;
 }
 
 const ErrorAlerts = (props: Props) => {
-  const errors = props.errors || parseError(props.error);
+  let errors = props.errors || parseError(props.error);
+
+  if (props.sanitizeError) {
+    errors = _.map(errors, props.sanitizeError);
+  }
 
   if (errors && errors.length) {
     return (
