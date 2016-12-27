@@ -18,13 +18,10 @@ function getDisplayName(WrappedComponent) {
 // )(Component);
 export default function makeLocalStore(reducer, initialState = {}, middlewares = [thunk]) {
   return WrappedComponent => {
-    // async reducer is often needed
-    // so we include him by default
-    const finalReducer = reduceReducers(reducer, asyncReducer);
     class LocalStore extends Component {
       constructor(...args) {
         super(...args);
-        this.store = createStore(finalReducer, initialState, applyMiddleware(...middlewares));
+        this.store = createStore(reducer, initialState, applyMiddleware(...middlewares));
       }
 
       render() {
@@ -41,5 +38,19 @@ export default function makeLocalStore(reducer, initialState = {}, middlewares =
 
     return hoistNonReactStatic(LocalStore, WrappedComponent);
   };
+}
+
+type ShouldReturnObject = (state: any, action: any) => Object;
+
+export function addAsyncReducer(reducer: ShouldReturnObject, namespace = 'asyncActions') {
+  if (!namespace) return reduceReducers(reducer, asyncReducer);
+
+  return (state, action) => {
+    const newState = reducer(state, action);
+    return {
+      ...newState,
+      [namespace]: asyncReducer(state, action),
+    };
+  }
 }
 
