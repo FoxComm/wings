@@ -47,9 +47,10 @@ export function addAsyncReducer(reducer: ShouldReturnObject, namespace = 'asyncA
 
   return (state, action) => {
     const newState = reducer(state, action);
+    const asyncState = state[namespace];
     return {
       ...newState,
-      [namespace]: asyncReducer(state, action),
+      [namespace]: asyncReducer(asyncState, action),
     };
   }
 }
