@@ -1,6 +1,6 @@
 {
   "name": "@foxcomm/wings",
-  "version": "1.9.0",
+  "version": "1.9.1",
   "scripts": {
     "flow": "flow check",
     "build-css": "postcss -c .postcss.json",
