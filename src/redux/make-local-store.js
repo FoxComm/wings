@@ -1,5 +1,5 @@
 
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import { applyMiddleware, createStore } from 'redux';
 import thunk from 'redux-thunk';
 import reduceReducers from 'reduce-reducers';
@@ -24,6 +24,14 @@ export default function makeLocalStore(reducer, initialState = {}, middlewares =
         this.store = createStore(reducer, initialState, applyMiddleware(...middlewares));
       }
 
+      getChildContext() {
+        // workaround for bug in react-redux: https://github.com/reactjs/react-redux/pull/589
+        // remove it after version v5.0.3 or above will be released
+        return {
+          storeSubscription: null,
+        };
+      }
+
       render() {
         return (
           <WrappedComponent
@@ -33,6 +41,10 @@ export default function makeLocalStore(reducer, initialState = {}, middlewares =
         );
       }
     }
+
+    LocalStore.childContextTypes = {
+      storeSubscription: PropTypes.oneOf([null, void 0]),
+    };
 
     LocalStore.displayName = `LocalStore(${getDisplayName(WrappedComponent)})`;
 
