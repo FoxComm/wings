@@ -7,10 +7,9 @@ const registeredActions = Object.create(null);
 
 export function reducer(state = {}, action) {
   const kind = _.get(action, 'meta.kind');
-  const payload = action.payload;
 
   if (kind == 'async') {
-    const { type, namespace } = action.meta;
+    const { type, namespace, payload } = action.meta;
     switch (type) {
       case 'started':
         return assoc(state,
@@ -42,6 +41,9 @@ export function reducer(state = {}, action) {
         return assoc(state,
           [namespace, 'err'], null
         );
+      case 'clearErrorsFor':
+        const assocArgs = _.flatMap(action.meta.namespaces, ns => [[ns, 'err'], null]);
+        return assoc(state, ...assocArgs);
       case 'resetReadyFlag':
         return assoc(state,
           [namespace, 'isReady'], null
@@ -53,13 +55,20 @@ export function reducer(state = {}, action) {
   return state;
 }
 
+export const clearErrorsFor = createAction('ASYNC_CLEAR_ERRORS', void 0, (...namespaces) => ({
+  kind: 'async',
+  type: 'clearErrorsFor',
+  namespaces,
+}));
+
 function createAsyncAction(namespace, type, payloadReducer) {
   const description = `${_.snakeCase(namespace).toUpperCase()}_${type.toUpperCase()}`;
 
-  return createAction(description, payloadReducer, () => ({
+  return createAction(description, payloadReducer, (payload) => ({
     kind: 'async',
     namespace,
     type,
+    payload,
   }));
 }
 
