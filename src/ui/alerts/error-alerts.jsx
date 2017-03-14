@@ -1,6 +1,7 @@
 /* @flow */
 
 import _ from 'lodash';
+import classNames from 'classnames';
 import React from 'react';
 import Alert from './alert';
 import AutoScroll from '../common/auto-scroll';
@@ -16,6 +17,7 @@ type Props = {
   error?: Object|string;
   closeAction?: Function;
   sanitizeError?: (err: string) => string;
+  className?: string;
 }
 
 const ErrorAlerts = (props: Props) => {
@@ -26,8 +28,9 @@ const ErrorAlerts = (props: Props) => {
   }
 
   if (errors && errors.length) {
+    const className = classNames('fc-errors', props.className);
     return (
-      <div className="fc-errors">
+      <div className={className}>
         <AutoScroll />
         {errors.map((error, index) => {
           // $FlowFixMe: ternary operator flow, do you hear it ?
