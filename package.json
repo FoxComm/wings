@@ -42,6 +42,8 @@
     "postcss-cli": "^2.5.2",
     "postcss-cssnext": "^2.7.0",
     "react": "^15.2.0",
+    "react-dom": "^15.2.0",
+    "react-imgix": "^5.2.1",
     "reduce-reducers": "^0.1.2",
     "redux": "^3.6.0",
     "redux-act": "^1.1.0",
