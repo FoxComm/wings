@@ -7,11 +7,17 @@ export default function createProductImage(imgixProductsSource, s3BucketName, s3
   // Use class component to be able to add 'ref' property outside
   return class ProductImage extends React.Component { // eslint-disable-line react/prefer-stateless-function
     render() {
-      if (!imgixProductsSource) {
+      if (!this.props.src) {
+        return null;
+      }
+
+      const matched = this.props.src.match(s3PrefixRegExp);
+
+      if (!imgixProductsSource || !matched) {
         return <img {...this.props} alt="" />;
       }
 
-      const [, s3RelativeUrl] = this.props.src.match(s3PrefixRegExp);
+      const [, s3RelativeUrl] = matched;
       const imgixUrl = `${imgixProductsSource}/${s3RelativeUrl}`;
 
       return <Imgix {...this.props} src={imgixUrl} />;
