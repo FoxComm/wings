@@ -6,10 +6,24 @@ import React from 'react';
 import Alert from './alert';
 import AutoScroll from '../common/auto-scroll';
 
+const UNEXPECTED_ERROR = 'Something went wrong. We are investigating it now.';
+
 function parseError(err) {
   if (!err) return null;
 
-  return _.get(err, ['responseJson', 'errors'], [err.toString()]);
+  const serverErrors = _.get(err, ['responseJson', 'errors']);
+  if (serverErrors) return serverErrors;
+
+  if (err.toString() !== '[object Object]') {
+    return [err.toString()];
+  }
+
+  if (process.env.NODE_ENV !== 'production') {
+    const errObject = _.get(err, 'responseJson', err);
+    return [`Something went wrong: \n${JSON.stringify(errObject, null, 2)}`];
+  }
+
+  return [UNEXPECTED_ERROR];
 }
 
 type Props = {
