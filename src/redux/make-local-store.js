@@ -1,5 +1,5 @@
 
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
 import { applyMiddleware, createStore } from 'redux';
 import thunk from 'redux-thunk';
 import reduceReducers from 'reduce-reducers';
@@ -17,7 +17,7 @@ function getDisplayName(WrappedComponent) {
 //   connect(mapLocalStateToProps)
 // )(Component);
 export default function makeLocalStore(reducer, initialState = {}, middlewares = [thunk]) {
-  return WrappedComponent => {
+  return (WrappedComponent) => {
     class LocalStore extends Component {
       constructor(...args) {
         super(...args);
@@ -52,6 +52,6 @@ export function addAsyncReducer(reducer: ShouldReturnObject, namespace = 'asyncA
       ...newState,
       [namespace]: asyncReducer(asyncState, action),
     };
-  }
+  };
 }
 

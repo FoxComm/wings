@@ -20,7 +20,7 @@ const Alert = (props: Props) => {
     'fc-alert',
     props.className,
     `_type_${props.type}`,
-    {'_closable': props.closeAction},
+    {_closable: props.closeAction}
   );
 
   let closeButton = null;
@@ -30,7 +30,7 @@ const Alert = (props: Props) => {
 
   return (
     <div className={className}>
-      <i className={`icon-${props.type}`}></i>
+      <i className={`icon-${props.type}`} />
       {props.children}
       {closeButton}
     </div>

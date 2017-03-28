@@ -3,10 +3,13 @@
   "version": "1.9.8",
   "scripts": {
     "flow": "flow check",
+    "lint": "eslint --ext .js --ext .jsx ./src",
     "build-css": "postcss -c .postcss.json",
     "build-js": "babel src -d lib",
     "build": "npm run build-css && npm run build-js",
     "prepublish": "npm run build",
+    "storybook": "start-storybook -p 9001 -s ./lib -c .storybook",
+    "storybook-production": "NODE_ENV=production start-storybook -p 9002 -s ./lib -c .storybook",
     "test": "mocha --compilers js:babel-register tests"
   },
   "publishConfig": {
@@ -17,6 +20,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@kadira/storybook": "^2.35.3",
     "babel-cli": "^6.7.5",
     "babel-eslint": "^7.2.0",
     "babel-plugin-syntax-flow": "^6.5.0",
@@ -27,17 +31,23 @@
     "babel-register": "^6.7.2",
     "eslint": "^3.18.0",
     "eslint-config-airbnb": "^14.1.0",
-    "eslint-plugin-flow-vars": "^0.5.0",
+    "eslint-plugin-flowtype": "^2.30.4",
     "eslint-plugin-import": "^2.2.0",
     "eslint-plugin-jsx-a11y": "^4.0.0",
     "eslint-plugin-react": "^6.10.3",
     "mocha": "^2.4.5"
+  },
+  "browserify": {
+    "transform": [
+      "loose-envify"
+    ]
   },
   "dependencies": {
     "classnames": "^2.2.5",
     "flow-bin": "^0.36.0",
     "hoist-non-react-statics": "^1.2.0",
     "lodash": "^4.13.1",
+    "loose-envify": "^1.3.1",
     "postcss": "^5.0.21",
     "postcss-cli": "^2.5.2",
     "postcss-cssnext": "^2.7.0",

@@ -6,10 +6,24 @@ import React from 'react';
 import Alert from './alert';
 import AutoScroll from '../common/auto-scroll';
 
+const UNEXPECTED_ERROR = 'Something went wrong. We are investigating it now.';
+
 function parseError(err) {
   if (!err) return null;
 
-  return _.get(err, ['responseJson', 'errors'], [err.toString()]);
+  const serverErrors = _.get(err, ['responseJson', 'errors']);
+  if (serverErrors) return serverErrors;
+
+  if (err.toString() !== '[object Object]') {
+    return [err.toString()];
+  }
+
+  if (process.env.NODE_ENV !== 'production') {
+    const errObject = _.get(err, 'responseJson', err);
+    return [`Something went wrong: \n${JSON.stringify(errObject, null, 2)}`];
+  }
+
+  return [UNEXPECTED_ERROR];
 }
 
 type Props = {
@@ -19,6 +33,8 @@ type Props = {
   sanitizeError?: (err: string) => string;
   className?: string;
 }
+
+/* eslint-disable react/no-array-index-key */
 
 const ErrorAlerts = (props: Props) => {
   let errors = props.errors || parseError(props.error);
@@ -40,7 +56,8 @@ const ErrorAlerts = (props: Props) => {
             <Alert
               key={`error-${error}-${index}`}
               type={Alert.ERROR}
-              closeAction={closeAction}>
+              closeAction={closeAction}
+            >
               {error}
             </Alert>
           );
