@@ -64,7 +64,7 @@ export const clearErrorsFor = createAction('ASYNC_CLEAR_ERRORS', void 0, (...nam
 function createAsyncAction(namespace, type, payloadReducer) {
   const description = `${_.snakeCase(namespace).toUpperCase()}_${type.toUpperCase()}`;
 
-  return createAction(description, payloadReducer, (payload) => ({
+  return createAction(description, payloadReducer, payload => ({
     kind: 'async',
     namespace,
     type,
@@ -91,7 +91,7 @@ export default function createAsyncActions(namespace, asyncMethod, payloadReduce
 
   const perform = (...args) => {
     return (dispatch, getState, api) => {
-      const handleError = err => {
+      const handleError = (err) => {
         const httpStatus = _.get(err, 'response.status');
         if (httpStatus != 404) {
           console.error(err);
@@ -120,7 +120,7 @@ export default function createAsyncActions(namespace, asyncMethod, payloadReduce
 
       let result = promise
         .then(
-          res => {
+          (res) => {
             dispatch(succeeded(res, ...args));
             return res;
           },

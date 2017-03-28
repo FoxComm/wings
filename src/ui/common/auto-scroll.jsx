@@ -2,6 +2,8 @@
 import React from 'react';
 import { isElementInViewport } from '../../dom-utils';
 
+/* eslint-disable no-return-assign */
+
 export default class AutoScroll extends React.Component {
   componentDidMount() {
     if (!isElementInViewport(this._node)) {
@@ -11,7 +13,7 @@ export default class AutoScroll extends React.Component {
 
   render() {
     return (
-      <div ref={(c) => this._node = c}></div>
+      <div ref={c => this._node = c} />
     );
   }
 }

@@ -34,6 +34,8 @@ type Props = {
   className?: string;
 }
 
+/* eslint-disable react/no-array-index-key */
+
 const ErrorAlerts = (props: Props) => {
   let errors = props.errors || parseError(props.error);
 
@@ -54,7 +56,8 @@ const ErrorAlerts = (props: Props) => {
             <Alert
               key={`error-${error}-${index}`}
               type={Alert.ERROR}
-              closeAction={closeAction}>
+              closeAction={closeAction}
+            >
               {error}
             </Alert>
           );

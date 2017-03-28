@@ -48,5 +48,5 @@ export function isCardNumberValid(cardNumber: string): boolean {
 }
 
 export function isCvvValid(cvv: string, cardType: string): boolean {
-  return cvv.length == cvvLength(cardType)
+  return cvv.length == cvvLength(cardType);
 }

@@ -7,7 +7,7 @@
 src
 
 [libs]
-src/interfaces/
+interfaces/
 
 [options]
 esproposal.decorators=ignore

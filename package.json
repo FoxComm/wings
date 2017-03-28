@@ -3,6 +3,7 @@
   "version": "1.9.8",
   "scripts": {
     "flow": "flow check",
+    "lint": "eslint --ext .js --ext .jsx ./src",
     "build-css": "postcss -c .postcss.json",
     "build-js": "babel src -d lib",
     "build": "npm run build-css && npm run build-js",
@@ -30,7 +31,7 @@
     "babel-register": "^6.7.2",
     "eslint": "^3.18.0",
     "eslint-config-airbnb": "^14.1.0",
-    "eslint-plugin-flow-vars": "^0.5.0",
+    "eslint-plugin-flowtype": "^2.30.4",
     "eslint-plugin-import": "^2.2.0",
     "eslint-plugin-jsx-a11y": "^4.0.0",
     "eslint-plugin-react": "^6.10.3",
