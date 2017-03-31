@@ -1,6 +1,6 @@
 {
   "name": "@foxcomm/wings",
-  "version": "1.9.10",
+  "version": "1.9.11",
   "scripts": {
     "flow": "flow check",
     "lint": "eslint --ext .js --ext .jsx ./src",
