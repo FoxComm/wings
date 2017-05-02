@@ -47,7 +47,7 @@ export function addAsyncReducer(reducer: ShouldReturnObject, namespace = 'asyncA
 
   return (state, action) => {
     const newState = reducer(state, action);
-    const asyncState = state[namespace];
+    const asyncState = newState[namespace];
     return {
       ...newState,
       [namespace]: asyncReducer(asyncState, action),
