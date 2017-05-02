@@ -16,7 +16,7 @@ function getDisplayName(WrappedComponent) {
 //   makeLocalStore(reducer),
 //   connect(mapLocalStateToProps)
 // )(Component);
-export default function makeLocalStore(reducer, initialState = {}, middlewares = [thunk]) {
+export default function makeLocalStore(reducer, initialState, middlewares = [thunk]) {
   return (WrappedComponent) => {
     class LocalStore extends Component {
       constructor(...args) {
