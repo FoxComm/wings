@@ -16,7 +16,7 @@ function getDisplayName(WrappedComponent) {
 //   makeLocalStore(reducer),
 //   connect(mapLocalStateToProps)
 // )(Component);
-export default function makeLocalStore(reducer, initialState = {}, middlewares = [thunk]) {
+export default function makeLocalStore(reducer, initialState, middlewares = [thunk]) {
   return (WrappedComponent) => {
     class LocalStore extends Component {
       constructor(...args) {
@@ -47,7 +47,7 @@ export function addAsyncReducer(reducer: ShouldReturnObject, namespace = 'asyncA
 
   return (state, action) => {
     const newState = reducer(state, action);
-    const asyncState = state[namespace];
+    const asyncState = newState[namespace];
     return {
       ...newState,
       [namespace]: asyncReducer(asyncState, action),
