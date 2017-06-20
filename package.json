@@ -42,6 +42,10 @@
       "loose-envify"
     ]
   },
+  "peerDependencies": {
+    "react": "^15.2.0",
+    "react-dom": "^15.2.0"
+  },
   "dependencies": {
     "classnames": "^2.2.5",
     "flow-bin": "^0.36.0",
@@ -52,8 +56,6 @@
     "postcss-cli": "^2.5.2",
     "postcss-cssnext": "^2.7.0",
     "prop-types": "^15.5.8",
-    "react": "^15.2.0",
-    "react-dom": "^15.2.0",
     "react-imgix": "^6.0.0",
     "reduce-reducers": "^0.1.2",
     "redux": "^3.6.0",
