@@ -14,7 +14,12 @@ export default class ProductImage extends React.Component {
   props: Props;
 
   get s3PrefixRegExp(): RegExp {
-    return new RegExp(`https://.*/${this.props.s3BucketName}/${this.props.s3BucketPrefix}/(.*)`);
+    const { s3BucketPrefix } = this.props;
+    if (s3BucketPrefix && s3BucketPrefix.length > 0) {
+      return new RegExp(`https://.*/${this.props.s3BucketName}/${this.props.s3BucketPrefix}/(.*)`);
+    }
+
+    return new RegExp(`https://.*/${this.props.s3BucketName}/(.*)`);
   }
 
   render() {

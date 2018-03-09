@@ -1,6 +1,6 @@
 {
-  "name": "@foxcomm/wings",
-  "version": "1.9.13",
+  "name": "@foxcommerce/wings",
+  "version": "1.9.14",
   "scripts": {
     "flow": "flow check",
     "lint": "eslint --ext .js --ext .jsx ./src",
@@ -11,9 +11,6 @@
     "storybook": "start-storybook -p 9001 -s ./lib -c .storybook",
     "storybook-production": "NODE_ENV=production start-storybook -p 9002 -s ./lib -c .storybook",
     "test": "mocha --compilers js:babel-register tests"
-  },
-  "publishConfig": {
-    "registry": "https://npm.foxcommerce.com:4873"
   },
   "description": "Shared libraries for FoxCommerce UI code",
   "main": "lib/index.js",
